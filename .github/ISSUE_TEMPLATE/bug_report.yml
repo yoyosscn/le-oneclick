@@ -1,0 +1,66 @@
+name: Bug 报告
+description: 报告运行失败、兼容性问题或异常行为
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请确认：
+        1. 已阅读 README 的「常见问题」；
+        2. 已用 `--dry-run` 复现，并确认问题不是 80 端口 / CDN 代理 / IPv6 造成的；
+        3. 贴出的日志里**不要包含真实域名、邮箱、IP**，请替换成 `example.com` / `admin@example.com`。
+
+  - type: input
+    id: version
+    attributes:
+      label: le-oneclick 版本
+      description: 执行 `sh le-oneclick.sh --version` 的输出
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: 系统环境
+      description: 发行版与版本（`cat /etc/os-release`）、sh 实现（`sh --version`）、acme.sh 版本
+      placeholder: Debian 12 / dash 0.5.12 / acme.sh 3.1.4
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: 执行命令
+      description: 实际执行的完整命令（把域名/邮箱替换成 example.com）
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: 输出与报错
+      description: 完整输出（脱敏后）。如需贴 acme.sh 日志，注意只保留相关片段
+      render: shell
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 验证方式
+      options:
+        - standalone（80 端口空闲）
+        - webroot（已有 Web 服务）
+        - 不确定
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 自查
+      options:
+        - label: 已确认 80 端口公网可达
+        - label: 域名是“仅 DNS”解析，没有走 CDN 代理
+        - label: 日志中已移除真实域名/邮箱/IP
