@@ -1,0 +1,6 @@
+#!/bin/sh
+# 测试用假 crontab：声称已有 acme.sh 续期任务，避免脚本告警。
+case "$1" in
+  -l) echo '0 3 * * * /root/.acme.sh/acme.sh --cron --home /root/.acme.sh > /dev/null' ;;
+  *)  exit 0 ;;
+esac

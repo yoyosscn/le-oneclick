@@ -1,0 +1,6 @@
+#!/bin/sh
+# 测试用假 id：让脚本认为自己以 root 运行，避免在 CI 里触发 sudo。
+case "$1" in
+  -u) echo 0 ;;
+  *)  echo "uid=0(root) gid=0(root) groups=0(root)" ;;
+esac
