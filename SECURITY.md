@@ -4,12 +4,11 @@
 
 **请使用 GitHub 的私密漏洞报告，不要公开提交 Issue。**
 
-`https://github.com/<owner>/<repo>/security/advisories/new`
+`https://github.com/yoyosscn/le-oneclick/security/advisories/new`
 （仓库页面 → Security → Advisories → Report a vulnerability）
 
-> 发布前请把上面的 `<owner>/<repo>` 替换为真实仓库地址；若暂时无法开启私密报告，
-> 请在此处填写**真实可收信**的专用邮箱，不要使用 `example.com` 之类的保留域 ——
-> 那个地址无法投递，等于没有报告渠道。
+> 若暂时无法开启私密报告，请在此处填写**真实可收信**的专用邮箱，不要使用 `example.com`
+> 之类的保留域 —— 那个地址无法投递，等于没有报告渠道。
 
 请尽量包含：复现步骤、影响范围、涉及版本、你的环境（发行版 / `sh` 实现 / acme.sh 版本）。
 确认后我们会在修复发布时致谢（除非你希望匿名）。

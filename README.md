@@ -53,13 +53,15 @@ sudo sh le-oneclick.sh
 scp le-oneclick.sh root@<服务器IP>:/root/
 
 # 方式 B：直接在服务器上下载
-curl -fsSL -o ~/le-oneclick.sh https://raw.githubusercontent.com/<owner>/<repo>/main/le-oneclick.sh
+curl -fsSL -o ~/le-oneclick.sh https://raw.githubusercontent.com/yoyosscn/le-oneclick/main/le-oneclick.sh
 # 可选：核对 Release 公布的 SHA256
 sha256sum ~/le-oneclick.sh
 ```
 
-> `<owner>/<repo>` 是占位符，替换成实际仓库地址；也可以直接用 Release 资产：
-> `https://github.com/<owner>/<repo>/releases/download/v1.1.0/le-oneclick.sh`
+> 上面用的是本项目的仓库地址（`yoyosscn/le-oneclick`）；也可以直接用 Release 资产：
+> `https://github.com/yoyosscn/le-oneclick/releases/download/v1.1.0/le-oneclick.sh`
+>
+> 如果你 fork 或改了仓库名，把上面两处地址换成你自己的。
 >
 > 放在 `/tmp` 也能跑（脚本允许带 sticky 位的公共目录），但**不要**放在 `/var/www`、`/home/xxx/uploads` 这类同组/他人可写的目录里 ——
 > 自动提权前脚本会校验自身与所在目录的权限，不安全的路径会直接拒绝。
@@ -357,6 +359,21 @@ rm -f /etc/V2ray/full_chain.pem /etc/V2ray/private.key
 
 ---
 
+## 发布到 GitHub 前的检查
+
+1. 确认 README / SECURITY.md 里的仓库地址（当前为 `yoyosscn/le-oneclick`）与实际仓库一致。
+2. 仓库 Settings → Security → 开启 **Private vulnerability reporting**（私密漏洞报告）。
+3. 可选：把 LICENSE 的版权主体改成你自己或组织名。
+4. `git init` 只在**本项目目录**内进行；不要把工作区里其他含真实域名/证书/私钥的文件一起提交
+   （`.gitignore` 已忽略 `*.pem` / `*.key` 等常见后缀，但仍建议 `git status` 自查一遍）。
+5. 打 tag（如 `v1.1.0`），在 Release 中附上 `le-oneclick-1.1.0.tar.gz` 与对应的 `.sha256`。
+
+---
+
 ## 许可证
 
 [MIT](LICENSE)
+
+---
+
+> 脚本由 Deepseek-V4.1-Flash-1017 驱动，爱来自大肥鱼。
