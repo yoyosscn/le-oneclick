@@ -43,6 +43,8 @@ export LE_ONECLICK_LIB
 # shellcheck disable=SC1090
 . "$SCRIPT"
 set +e 2>/dev/null || true
+# 关键：不要在后面的子进程里继续带着这个标记，否则脚本会只定义函数、不执行主流程
+unset LE_ONECLICK_LIB
 
 rc_of() { # 返回 0/1，不依赖 set -e 行为
   if "$@" >/dev/null 2>&1; then
