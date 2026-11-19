@@ -1,0 +1,29 @@
+# 忽略规则
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 真实证书 / 私钥 / 账户文件 —— 永不提交
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.csr
+.acme.sh/
+acme.sh.log
+.env
+
+# 本地产物
+dist/
+release/
+tmp/
+/tmp-*
+
+# 编辑器
+.idea/
+.vscode/
