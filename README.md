@@ -357,17 +357,6 @@ rm -f /etc/V2ray/full_chain.pem /etc/V2ray/private.key
 
 ---
 
-## 发布到 GitHub 前的检查
-
-1. 替换占位符：README 中的 `<owner>/<repo>`、SECURITY.md 中的 GitHub 仓库地址。
-2. 仓库 Settings → Security → 开启 **Private vulnerability reporting**（私密漏洞报告）。
-3. 可选：把 LICENSE 的版权主体改成你自己或组织名。
-4. `git init` 只在**本项目目录**内进行；不要把工作区里其他含真实域名/证书/私钥的文件一起提交
-   （`.gitignore` 已忽略 `*.pem` / `*.key` 等常见后缀，但仍建议 `git status` 自查一遍）。
-5. 打 tag（如 `v1.1.0`），在 Release 中附上 `le-oneclick-1.1.0.tar.gz` 与对应的 `.sha256`。
-
----
-
 ## 许可证
 
 [MIT](LICENSE)
